@@ -1,0 +1,112 @@
+$themeColor: #003f60;
+%ai-c {align-items: center;}
+%jc-c {justify-content: center;}
+%ai-s {align-items: stretch;}
+%jc-sb {display: flex; justify-content: space-between;}
+%fd-c {flex-direction: column;} 
+%flex-center {text-align: center; display: flex; justify-content: center; align-items: center; margin: 0 auto; padding: 0;}
+%mp {margin: 0 auto; padding: 0;}
+
+
+/////////////////////
+// CUSTOM CLASSES //
+////////////////////
+.layout {
+    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 27.5vw auto 27.5vw;
+    grid-template-rows: 8vh 1fr 15vh;
+    grid-template-areas: 'header header header'
+    '. content .'
+    'footer footer footer';
+    &.left-open {
+        grid-template-areas: 'header header header' 
+        'left left content' 
+        'footer footer footer';
+        .content {
+            display: none;
+        }
+    }
+    &.right-open {
+        grid-template-areas: 'header header header' 
+        'content right right' 
+        'footer footer footer';
+        .content {
+            display: none;
+        }
+    }
+
+    .header {
+        background: $themeColor;
+        grid-area: header;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 7fr 1fr;
+        .header-main {
+            margin: 0;
+            padding: 1.45rem 1.0875rem;
+            width: 60vw;
+            .header-title {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+                .header-title-link {
+                    color: gainsboro;
+                    font-family: 'Lato';
+                    font-size: 4vh;
+                    font-weight: 100;
+                    text-decoration: none;
+                }
+            }
+        }
+        // .header-side {
+        //     display: flex;
+        //     align-items: center;
+        //     justify-content: center;
+        //     width: 20vw;
+        // }
+        .back-button {
+            display: block;
+        }
+        .menu-button {
+            display: block;
+        }
+    }
+    .content {
+        background: #a5acaf;
+        grid-area: content;
+        padding: 1.45rem 1.225rem;
+    }
+    .footer {
+        grid-area: footer;
+        background: $themeColor;
+        height: 100%;
+        width: 100%;
+        .footer-posts-link {
+            color: aquamarine;
+        }
+    }
+    .slide-left {
+        background: yellow;
+        grid-area: left;
+        display: block;
+    }
+    .slide-right {
+        background: yellow;
+        grid-area: right;
+        display: block;
+    }
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
