@@ -1,12 +1,8 @@
 ---
 title: "My Second Project Page"
-layout: project
-draft: true
+layout: "project"
 path: "/project02"
-category: "Category"
-description: "Description"
-tags:
-  - "Tag"
+category: "Projects"
 ---
 
 ```js

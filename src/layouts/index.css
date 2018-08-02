@@ -70,9 +70,27 @@
 
 .layout .footer {
   grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
   background: #003f60;
   height: 100%;
   width: 100%;
+}
+
+.layout .footer .footer-list {
+  display: block;
+  height: 100%;
+  width: 50%;
+  list-style: none;
+}
+
+.layout .footer .footer-list.posts li a {
+  color: red;
+}
+
+.layout .footer .footer-list.projects li a {
+  color: yellow;
 }
 
 .layout .footer .footer-posts-link {

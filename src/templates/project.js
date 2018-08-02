@@ -1,25 +1,23 @@
 import React from 'react'
 
-export default function ProjectPost({data, children}) {
+export default function ProjectPostTemplate({data}) {
   const {markdownRemark: project} = data
   return (
     <div>
       <h1>{project.frontmatter.title}</h1>
-      <div className={`project-markup`}
-        dangerouslySetInnerHTML={{__html: project.html}} />
-      <br /> <hr /> <br />
-      {children}
+      <div dangerouslySetInnerHTML={{__html: project.html}} />
     </div>
   )
 }
 
 export const projectQuery = graphql`
-  query ProjectByPath($path: String!, $layout: String) {
-    markdownRemark(frontmatter: {layout: {eq: $layout}}) {
+  query ProjectPostByPath($path: String!) {
+    markdownRemark(frontmatter: {path: {eq: $path}}) {
       html
       frontmatter {
         path
         title
+        layout
       }
     }
   }

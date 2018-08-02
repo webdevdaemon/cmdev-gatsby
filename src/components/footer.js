@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = ({posts, children}) => {
   return <div className="footer">
     <ul className="footer-list posts">
-        {posts.map(({node}) => <li>
+        {posts.map(({node}, index) => <li key={index}>
             <a className="footer-posts-link" href={node.frontmatter.path}>
               {node.frontmatter.title}
             </a>
@@ -11,7 +11,7 @@ const Footer = ({posts, children}) => {
       </ul>
       <div className="footer-content">{children}</div>
     <ul className="footer-list projects">
-        {posts.map(({node}) => <li>
+        {posts.map(({node}, index) => <li key={index}>
             <a className="footer-posts-link" href={node.frontmatter.path}>
               {node.frontmatter.title}
             </a>

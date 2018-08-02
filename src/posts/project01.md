@@ -1,18 +1,11 @@
 ---
 title: "My First Project Page"
-layout: project
+layout: "project"
 path: "/project01"
-tags:
-  - "project"
-  - "case-study"
-  - "journal"
-  - "code"
-  - "edu"
+category: "Projects"
 ---
 
 An article about my Project
-
-
 ```js
 const pbCrisp = new Project()
 function abcd(efg) {

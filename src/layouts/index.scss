@@ -83,9 +83,32 @@ $themeColor: #003f60;
     }
     .footer {
         grid-area: footer;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
         background: $themeColor;
         height: 100%;
         width: 100%;
+        .footer-list {
+            display: block;
+            height: 100%;
+            width: 50%;
+            list-style: none;
+            &.posts {
+                li {
+                    a {
+                        color: red;                        
+                    }
+                }
+            }
+            &.projects {
+                li {
+                    a {
+                        color: yellow;                            
+                    }
+                }
+            }
+        }
         .footer-posts-link {
             color: aquamarine;
         }
