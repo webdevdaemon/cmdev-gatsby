@@ -34,7 +34,7 @@ exports.createPages = ({boundActionCreators, graphql}) => {
         title: node.frontmatter.title,
         component: node.frontmatter.layout === "project"
           ? ProjectPostTemplate : BlogPostTemplate,
-        html: node.html,
+        layout: node.frontmatter.layout || "index",
       })
     })
   })
