@@ -1,8 +1,7 @@
 ---
 title: "My First Project Page"
-layout: "project"
+type: "project"
 path: "/project01"
-category: "Projects"
 ---
 
 An article about my Project

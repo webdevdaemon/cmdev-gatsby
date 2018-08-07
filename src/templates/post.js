@@ -1,4 +1,5 @@
 import React from 'react'
+// import Helmet from 'react-helmet'
 
 export default function BlogPostTemplate({data}) {
   const {markdownRemark: post} = data
@@ -17,7 +18,7 @@ export const postQuery = graphql`
       frontmatter {
         path
         title
-        layout
+        type
       }
     }
   }

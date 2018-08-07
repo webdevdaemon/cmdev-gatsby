@@ -5,7 +5,6 @@ const path = require('path')
 exports.createPages = ({boundActionCreators, graphql}) => {
   const {createPage} = boundActionCreators
   const BlogPostTemplate = path.resolve('src/templates/post.js')
-  const ProjectPostTemplate = path.resolve('src/templates/project.js')
   return graphql(
     `
       {
@@ -17,7 +16,6 @@ exports.createPages = ({boundActionCreators, graphql}) => {
               frontmatter {
                 path
                 title
-                layout
               }
             }
           }
@@ -25,16 +23,12 @@ exports.createPages = ({boundActionCreators, graphql}) => {
       }
     `,
   ).then(res => {
-    if (res.errors) {
-      return Promise.reject(res.errors)
-    }
+    if (res.errors) return Promise.reject(res.errors)
     res.data.allMarkdownRemark.edges.forEach(({node}) => {
       createPage({
         path: node.frontmatter.path,
         title: node.frontmatter.title,
-        component: node.frontmatter.layout === "project"
-          ? ProjectPostTemplate : BlogPostTemplate,
-        layout: node.frontmatter.layout || "index",
+        component: BlogPostTemplate,
       })
     })
   })
