@@ -1,14 +1,9 @@
 ---
 title: "My Second Project Page"
-layout: project
-draft: true
 path: "/project02"
-category: "Category"
-description: "Description"
-tags:
-  - "Tag"
 ---
 
+Another article about another project
 ```js
 const jellySog = new Project()
 function zyxwvut(srq) {

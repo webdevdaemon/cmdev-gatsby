@@ -1,78 +1,190 @@
+.layout .header, .layout .header .header-main {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .layout {
+  position: relative;
   min-height: 100vh;
   width: 100vw;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 27.5vw auto 27.5vw;
-  grid-template-rows: 8vh 1fr 15vh;
-  grid-template-areas: 'header header header' '. content .' 'footer footer footer';
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 9vh 1fr 14vh;
+  grid-template-areas: 'h h h h h h h' '. c c c c c .' 'f f f f f f f';
 }
 
-.layout.left-open {
-  grid-template-areas: 'header header header'  'left left content'  'footer footer footer';
+.layout aside {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  max-height: 91vh;
+  width: 0;
+  z-index: 1000;
+  transition: all .3s ease-out;
 }
 
-.layout.left-open .content {
-  display: none;
+.layout aside div {
+  transition: all .4s ease-out;
+  transition-delay: .2s;
+  color: #003f60;
+  background: #ebeff0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 40vw;
 }
 
-.layout.right-open {
-  grid-template-areas: 'header header header'  'content right right'  'footer footer footer';
+.layout aside.left {
+  position: absolute;
+  top: 9vh;
+  bottom: 0;
+  left: 0;
+  right: auto;
 }
 
-.layout.right-open .content {
-  display: none;
+.layout aside.left .left-menu {
+  position: absolute;
+  left: -40vw;
+  height: 100%;
+}
+
+.layout aside.right {
+  position: absolute;
+  top: 9vh;
+  bottom: 0;
+  left: auto;
+  right: 0;
+}
+
+.layout aside.right .right-menu {
+  position: absolute;
+  right: -40vw;
+  height: 100%;
+}
+
+.layout.left-open .left {
+  width: 100%;
+}
+
+.layout.left-open .left .left-menu {
+  left: 0;
+}
+
+.layout.right-open .right {
+  width: 100%;
+}
+
+.layout.right-open .right .right-menu {
+  right: 0;
+}
+
+.layout .content {
+  grid-area: c;
+  padding: 1.45rem 1.225rem;
 }
 
 .layout .header {
   background: #003f60;
-  grid-area: header;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 7fr 1fr;
+  grid-area: h;
+  width: 100vw;
+  box-shadow: 0 4px 6px #000;
 }
 
 .layout .header .header-main {
+  display: block;
   margin: 0;
-  padding: 1.45rem 1.0875rem;
-  width: 60vw;
+  padding: 0;
+  width: 80vw;
 }
 
 .layout .header .header-main .header-title {
   display: flex;
+  margin: 0;
+  padding: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  text-shadow: 2px 3px 1px #000000;
 }
 
 .layout .header .header-main .header-title .header-title-link {
   color: gainsboro;
-  font-family: 'Lato';
-  font-size: 4vh;
+  font-family: 'Lato-hairline';
+  text-transform: uppercase;
+  font-size: 8vmin;
   font-weight: 100;
   text-decoration: none;
 }
 
-.layout .header .back-button {
-  display: block;
+.layout .header .header-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  overflow: visible;
+  height: 9vh;
+  width: 12vw;
 }
 
-.layout .header .menu-button {
+.layout .header .header-side svg {
   display: block;
+  color: #ebeff0;
+  margin: auto;
+  padding: 0;
+  -webkit-filter: drop-shadow(2px 3px 1px #000000);
+  filter: drop-shadow(2px 3px 1px #000000);
 }
 
-.layout .content {
-  background: #a5acaf;
-  grid-area: content;
-  padding: 1.45rem 1.225rem;
+.layout .header .header-side.right {
+  margin-right: 2vw;
+}
+
+.layout .header .header-side.right svg {
+  font-size: 7vmin;
+}
+
+.layout .header .header-side.left {
+  margin-left: 2vw;
+}
+
+.layout .header .header-side.left svg {
+  font-size: 8vmin;
 }
 
 .layout .footer {
-  grid-area: footer;
+  grid-area: f;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
   background: #003f60;
   height: 100%;
   width: 100%;
+}
+
+.layout .footer .footer-list {
+  display: block;
+  height: 100%;
+  width: 50%;
+  list-style: none;
+}
+
+.layout .footer .footer-list.posts li a {
+  color: red;
+}
+
+.layout .footer .footer-list.projects li a {
+  color: yellow;
 }
 
 .layout .footer .footer-posts-link {

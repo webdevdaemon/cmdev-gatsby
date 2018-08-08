@@ -1,50 +1,82 @@
+import './index.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-// import './index.css'
-import './index.scss'
-
-import Header from '../components/header'
+import Header from  '../components/header'
+import Footer from  '../components/footer'
 import Content from '../components/content'
-import Footer from '../components/footer'
+import Aside from '../components/aside'
 
-const projOk = ({node}) => node.frontmatter.layout === 'projects'
-const postOk = ({node}) => node.frontmatter.layout === 'post'
+const INIT_STATE = {
+  leftOpen: false,
+  rightOpen: false,
+  layoutClass: '',
+  testList: [
+    'PAGE 1',
+    'PAGE 2',
+    'ARTICLE 1',
+    'TEST TEST TEST'
+  ],
+}
 
 class Layout extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      currentTitle: "",
-    }
+    super(props)
+    this.state = {...INIT_STATE}
   }
 
+  toggleLeft = () => {
+    this.setState({ rightOpen: false, })
+    this.setState(prevState => ({
+      leftOpen: !prevState.leftOpen,
+      layoutClass: prevState.layoutClass === '' ? ' left-open' : '',
+    }))
+  }
 
+  toggleRight = () => {
+    this.setState({leftOpen: false, })
+    this.setState(prevState => ({
+      leftOpen: !prevState.rightOpen,
+      layoutClass: prevState.layoutClass === '' ? ' right-open' : '',
+    }))
+  }
+
+  hideAll = () => {
+    const {leftOpen, rightOpen} = this.state
+    if (!leftOpen && !rightOpen) return
+    this.setState(INIT_STATE)
+  }
 
   render() {
-    const {children, data} = this.props;
-    console.dir(data)
-    const entries = data.allMarkdownRemark.edges,
-      pageTitle = data.markdownRemark.frontmatter.title,
-      posts = [...entries].filter(postOk), [...projects] = entries.filter(projOk)
-    return (
-      <div className="layout index">
-        <Helmet
-          title={data.site.siteMetadata.title}
-          meta={[{name: 'description', content: 'Sample'}, {name: 'keywords', content: 'sample, something'}]}
-        />
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <Content title={pageTitle}>
-          {React.Children.map(children, child => React.cloneElement(child, {title: pageTitle}))}
-        </Content>
-        <Footer posts={posts} projects={projects} />
-      </div>
-    )
+    const {data, children} = this.props
+    const {layoutClass} = this.state
+    console.log({data})
+    return <main className={`layout${layoutClass}`}>
+      <Helmet title={data.site.siteMetadata.title} meta={[{name: 'description', content: 'Sample'}, {name: 'keywords', content: 'sample, something'}]} />
+      <Header toggleLeft={this.toggleLeft} toggleRight={this.toggleRight} siteTitle={data.site.siteMetadata.title} />
+      <Content>{children()}</Content>
+      <Aside
+        klass="left"
+        outerClick={this.hideAll}
+        visible={layoutClass !== ''}
+        links={this.state.testList}
+      />
+      <Aside
+        klass="right"
+        outerClick={this.hideAll}
+        visible={layoutClass !== ''}
+        links={this.state.testList}
+      />
+          
+        <Footer posts={[...data.allMarkdownRemark.edges]} />
+      </main>
   }
 }
 
-Layout.propTypes = {children: PropTypes.func}
+Layout.propTypes = {
+  children: PropTypes.func,
+}
 
 export default Layout
 
@@ -52,7 +84,7 @@ export const query = graphql`
   query LayoutQuery {
     site {
       siteMetadata {
-        title
+        title 
       }
     }
     allMarkdownRemark {
@@ -61,7 +93,6 @@ export const query = graphql`
           frontmatter {
             title
             path
-            layout
           }
         }
       }

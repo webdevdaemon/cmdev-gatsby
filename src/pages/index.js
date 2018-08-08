@@ -1,31 +1,42 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import Helmet from 'react-helmet'
+import '../layouts/index.scss'
 
-const IndexPage = () => (
-  <div>
-    <h2>Hi people</h2>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-    <div>
-      <h1>Richard Hamming on Luck</h1>
-      <div>
-        <p>
-          From Richard Hamming’s classic and must-read talk, “<a href="http://www.cs.virginia.edu/~robins/YouAndYourResearch.html">
-            You and Your Research
-          </a>”.
-        </p>
-        <blockquote>
-          <p>
-            There is indeed an element of luck, and no, there isn’t. The prepared mind sooner or later finds
-            something important and does it. So yes, it is luck.{' '}
-            <em>The particular thing you do is luck, but that you do something is not.</em>
-          </p>
-        </blockquote>
-      </div>
-      <p>Posted April 09, 2011</p>
+export default function Index({data, ...props}) {
+  console.log({props})
+  const {edges: posts} = data.allMarkdownRemark
+  return (
+    <div className="blog-posts">
+      <ul>
+        {posts.filter(post => post.node.frontmatter.title.length > 0).map(({node: post}) => {
+          return (
+            <li className="blog-post-preview" key={post.id}>
+              <p>
+                <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
+              </p>
+              {/* <h2>{post.frontmatter.date}</h2> */}
+              {/* <p>{post.excerpt}</p> */}
+            </li>
+          )
+        })}
+      </ul>
     </div>
-  </div>
-)
+  )
+}
 
-export default IndexPage
+export const pageQuery = graphql`
+  query IndexQuery {
+    allMarkdownRemark {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            path
+          }
+        }
+      }
+    }
+  }
+`

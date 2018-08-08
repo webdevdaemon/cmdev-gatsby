@@ -11,9 +11,9 @@ class Projects extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
               
-      </div>
+      </React.Fragment>
     )
   }
 }
