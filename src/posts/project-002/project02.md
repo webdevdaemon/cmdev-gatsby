@@ -1,6 +1,5 @@
 ---
 title: "My Second Project Page"
-type: "project"
 path: "/project02"
 ---
 

@@ -12,7 +12,8 @@ class Content extends React.Component {
     const {title} = this.props
     return (
       <div className='content'>
-        <PageTitle title={title}/>
+        <PageTitle title={title} />
+        
         {this.props.children}
       </div>
     )

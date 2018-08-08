@@ -1,6 +1,5 @@
 ---
 title: "Welcome to cmDevBlog"
-type: "post"
 path: "/blog/welcome"
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "The Passion of the Code"
-type: "post"
 path: "/blog/passion-of-the-code"
 ---
 

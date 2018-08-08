@@ -1,6 +1,5 @@
 ---
-title: "Beyond "Hello, world!""
-type: "post"
+title: "Beyond 'Hello, world!'"
 path: "/blog/beyond-hello-world"
 ---
 
