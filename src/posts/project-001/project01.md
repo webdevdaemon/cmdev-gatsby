@@ -1,6 +1,8 @@
 ---
 title: "My First Project Page"
-path: "/project01"
+path: "/project/01"
+layout: project
+excerpt: "..."
 ---
 
 An article about my Project

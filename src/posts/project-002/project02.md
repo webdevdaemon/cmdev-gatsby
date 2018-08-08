@@ -1,6 +1,8 @@
 ---
 title: "My Second Project Page"
-path: "/project02"
+path: "/project/02"
+layout: project
+excerpt: "..."
 ---
 
 Another article about another project
@@ -11,3 +13,5 @@ function zyxwvut(srq) {
 }
 ```
 `const isParticle = wave.observed`
+
+An article about Title
