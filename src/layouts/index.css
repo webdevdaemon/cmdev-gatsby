@@ -27,7 +27,9 @@ body {
   background: rgba(0, 0, 0, 0.8);
   color: white;
   max-height: 91vh;
+  padding-top: 8.5vh;
   width: 0;
+  top: 0;
   z-index: 1000;
   transition: all .3s ease-out;
 }
@@ -46,7 +48,6 @@ body {
 
 .layout aside.left {
   position: absolute;
-  top: 9vh;
   bottom: 0;
   left: 0;
   right: auto;
@@ -60,7 +61,6 @@ body {
 
 .layout aside.right {
   position: absolute;
-  top: 9vh;
   bottom: 0;
   left: auto;
   right: 0;
@@ -98,6 +98,7 @@ body {
   grid-area: h;
   width: 100vw;
   box-shadow: 0 4px 6px #000;
+  z-index: 1100;
 }
 
 .layout .header .header-main {
