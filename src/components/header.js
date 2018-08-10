@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import FaBars from 'react-icons/lib/fa/bars'
-import FaCode from 'react-icons/lib/fa/code'
+import {FaBars} from 'react-icons/fa'
+import {FaCode} from 'react-icons/fa'
 // import '../../public/cm4h-logo.svg'
 
 // const linkStyle = {
@@ -16,10 +16,7 @@ const Header = ({siteTitle, toggleLeft, toggleRight}) => (
   <div className="header">
 
     <a className="header-side left" onClick={toggleLeft}>
-      {/* <span className='icon code'> */}
-        <FaCode />
-      {/* </span> */}
-      {/* <p>{`PROJECTS`}</p> */}
+      <FaCode />
     </a>
 
     <div className="header-main">

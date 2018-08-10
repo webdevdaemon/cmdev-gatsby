@@ -1,7 +1,7 @@
 ---
 title: "The Passion of the Code"
 path: "/blog/passion-of-the-code"
-layout: blog
+layout: Blog
 excerpt: "..."
 ---
 

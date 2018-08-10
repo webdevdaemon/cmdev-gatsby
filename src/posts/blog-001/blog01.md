@@ -1,7 +1,7 @@
 ---
 title: "Welcome to cmDevBlog"
 path: "/blog/welcome"
-layout: blog
+layout: Blog
 excerpt: "..."
 ---
 

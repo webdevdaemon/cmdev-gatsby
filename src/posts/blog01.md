@@ -1,7 +1,7 @@
 ---
 path: "/blog/intro"
 title: "The Intro"
-layout: blog
+layout: Blog
 excerpt: "..."
 ---
 

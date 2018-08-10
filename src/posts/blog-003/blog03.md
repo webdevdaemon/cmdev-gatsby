@@ -1,7 +1,7 @@
 ---
 title: "Beyond 'Hello, world!'"
 path: "/blog/beyond-hello-world"
-layout: blog
+layout: Blog
 excerpt: "..."
 ---
 

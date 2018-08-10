@@ -16,38 +16,40 @@ body {
   position: relative;
   min-height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 9vh 1fr 14vh;
+  grid-template-rows: 9vh minmax(70vh, auto) auto;
   grid-template-areas: 'h h h h h h h' '. c c c c c .' 'f f f f f f f';
 }
 
 .layout aside {
-  background: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
-  max-height: 91vh;
-  padding-top: 8.5vh;
+  max-height: 100%;
   width: 0;
   top: 0;
   z-index: 1000;
-  transition: all .3s ease-out;
+  transition-delay: 400ms;
+  transition: all 500ms ease-out;
 }
 
 .layout aside div {
-  transition: all .4s ease-out;
-  transition-delay: .2s;
-  color: #003f60;
   background: #ebeff0;
-  overflow: hidden;
+  color: #003f60;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  overflow: hidden;
+  padding-top: 8.5vh;
+  top: 0;
+  transition: all 150ms ease-out;
   width: 40vw;
 }
 
 .layout aside.left {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: auto;
@@ -60,7 +62,7 @@ body {
 }
 
 .layout aside.right {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: auto;
   right: 0;
@@ -88,12 +90,9 @@ body {
   right: 0;
 }
 
-.layout .content {
-  grid-area: c;
-  padding: 1.45rem 1.225rem;
-}
-
 .layout .header {
+  position: sticky;
+  top: 0;
   background: #003f60;
   grid-area: h;
   width: 100vw;
@@ -163,6 +162,11 @@ body {
   font-size: 8vmin;
 }
 
+.layout .content {
+  grid-area: c;
+  padding: 1.45rem 1.225rem;
+}
+
 .layout .footer {
   grid-area: f;
   display: flex;
@@ -190,18 +194,6 @@ body {
 
 .layout .footer .footer-posts-link {
   color: aquamarine;
-}
-
-.layout .slide-left {
-  background: yellow;
-  grid-area: left;
-  display: block;
-}
-
-.layout .slide-right {
-  background: yellow;
-  grid-area: right;
-  display: block;
 }
 
 .list {

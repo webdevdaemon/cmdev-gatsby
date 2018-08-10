@@ -1,7 +1,7 @@
 ---
 path: "/blog/cm4h"
 title: "CM4H - Charles Morgan <4> Hire"
-layout: blog
+layout: Blog
 excerpt: "..."
 ---
 

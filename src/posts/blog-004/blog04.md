@@ -1,7 +1,7 @@
 ---
 title: "On the Fourth Day..."
 path: "/blog/on-the-fourth-day"
-layout: blog
+layout: Blog
 excerpt: "..."
 ---
 

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import PropTypes from '../../../../../Library/Caches/typescript/2.9/node_modules/@types/prop-types'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 export class Card extends Component {
   static propTypes = {

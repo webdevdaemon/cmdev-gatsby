@@ -1,32 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Aside = ({klass, outerClick, visible, links}) => {
+const SlideMenu = ({klass, outerClick, visible, render, menuTitle}) => {
   return (
-    <aside 
-      className={`${klass}`}
-      onClick={(e) => {
+    <aside className={`${klass}`} onClick={
+      (e) => {
         e.stopPropagation()
         e.preventDefault()
         visible && outerClick()
       }
     }>
       <div className={`${klass}-menu`}>
-        <ul>
-          {links.map((str, dex) => <li key={dex}>
-            <h2> {str} </h2>
-          </li>)}
-        </ul>
+        <p className="slide-menu-title">{menuTitle}</p>
+
+        {render()}
+        
       </div>
     </aside>
   )
 }
 
-Aside.propTypes = {
+SlideMenu.propTypes = {
+  menuTitle: PropTypes.string,
   klass: PropTypes.string,
   outerClick: PropTypes.func,
   visible: PropTypes.bool,
-  links: PropTypes.array,
+  render: PropTypes.func,
 }
 
-export default Aside
+export default SlideMenu

@@ -1,7 +1,7 @@
 ---
 title: "My Second Project Page"
 path: "/project/02"
-layout: project
+layout: Project
 excerpt: "..."
 ---
 

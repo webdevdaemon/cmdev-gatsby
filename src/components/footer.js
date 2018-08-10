@@ -1,23 +1,12 @@
 import React from 'react'
+import Nav from './nav'
 
-const Footer = ({posts, children}) => {
-  return <div className="footer">
-    <ul className="footer-list posts">
-        {posts.map(({node}, index) => <li key={index}>
-            <a className="footer-posts-link" href={node.frontmatter.path}>
-              {node.frontmatter.title}
-            </a>
-          </li>)}
-      </ul>
-      <div className="footer-content">{children}</div>
-    <ul className="footer-list projects">
-        {posts.map(({node}, index) => <li key={index}>
-            <a className="footer-posts-link" href={node.frontmatter.path}>
-              {node.frontmatter.title}
-            </a>
-          </li>)}
-      </ul>
+const Footer = ({children}) => {
+  return (
+    <div className="footer">
+      <Nav klass={`footer-nav`}/>
     </div>
+  )
 }
 
 export default Footer

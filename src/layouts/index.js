@@ -3,21 +3,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-import Header from  '../components/header'
-import Footer from  '../components/footer'
+import Header from '../components/header'
+import Footer from '../components/footer'
 import Content from '../components/content'
-import Aside from '../components/aside'
+import SlideMenu from '../components/slideMenu'
 
 const INIT_STATE = {
   leftOpen: false,
   rightOpen: false,
   layoutClass: '',
-  testList: [
-    'PAGE 1',
-    'PAGE 2',
-    'ARTICLE 1',
-    'TEST TEST TEST'
-  ],
+  testList: ['PAGE 1', 'PAGE 2', 'ARTICLE 1', 'TEST TEST TEST'],
 }
 
 class Layout extends React.Component {
@@ -26,22 +21,26 @@ class Layout extends React.Component {
     this.state = {...INIT_STATE}
   }
 
+  static propTypes = {
+    data: PropTypes.any,
+    children: PropTypes.any,
+  }
+
+  isProject = ({node}) => node.frontmatter.layout === 'Project'
   toggleLeft = () => {
-    this.setState({ rightOpen: false, })
+    this.setState({rightOpen: false})
     this.setState(prevState => ({
       leftOpen: !prevState.leftOpen,
       layoutClass: prevState.layoutClass === '' ? ' left-open' : '',
     }))
   }
-
   toggleRight = () => {
-    this.setState({leftOpen: false, })
+    this.setState({leftOpen: false})
     this.setState(prevState => ({
       leftOpen: !prevState.rightOpen,
       layoutClass: prevState.layoutClass === '' ? ' right-open' : '',
     }))
   }
-
   hideAll = () => {
     const {leftOpen, rightOpen} = this.state
     if (!leftOpen && !rightOpen) return
@@ -50,32 +49,73 @@ class Layout extends React.Component {
 
   render() {
     const {data, children} = this.props
-    const {layoutClass} = this.state
-    console.log({data})
-    return <main className={`layout${layoutClass}`}>
-      <Helmet title={data.site.siteMetadata.title} meta={[{name: 'description', content: 'Sample'}, {name: 'keywords', content: 'sample, something'}]} />
-      <Header toggleLeft={this.toggleLeft} toggleRight={this.toggleRight} siteTitle={data.site.siteMetadata.title} />
-      <Content>{children()}</Content>
-      <Aside
-        klass="left"
-        outerClick={this.hideAll}
-        visible={layoutClass !== ''}
-        links={this.state.testList}
-      />
-      <Aside
-        klass="right"
-        outerClick={this.hideAll}
-        visible={layoutClass !== ''}
-        links={this.state.testList}
-      />
-          
-        <Footer posts={[...data.allMarkdownRemark.edges]} />
-      </main>
-  }
-}
+    const {layoutClass, mdBlogArr, mdProjArr} = this.state
+    console.log(data, layoutClass, mdBlogArr, mdProjArr)
+    
+    return (
+      <main className={`layout${layoutClass}`}>
 
-Layout.propTypes = {
-  children: PropTypes.func,
+        <Helmet
+          title={data.site.siteMetadata.title}
+          meta={[{name: 'description', content: 'Sample'}, {name: 'keywords', content: 'sample, something'}]}
+        />
+
+        <Header
+          toggleLeft={this.toggleLeft}
+          toggleRight={this.toggleRight}
+          siteTitle={data.site.siteMetadata.title}
+        />
+
+        <Content>{children()}</Content>
+
+        <SlideMenu
+          menuTitle="cmDevBlog"
+          klass="left"
+          outerClick={this.hideAll}
+          visible={layoutClass !== ''}
+          
+          render={() => (
+            <ul className="slide-menu-list">
+              {[...this.props.data.allMarkdownRemark.edges]
+                .filter(x => !this.isProject(x))
+                .map(({node}, index) => (
+                  <li key={index}>
+                    <a className="footer-posts-link" href={node.frontmatter.path}>
+                      {node.frontmatter.title}
+                    </a>
+                  </li>
+                ))}
+            </ul>
+          )}
+        
+        />
+
+        <SlideMenu
+          menuTitle="cmDevProjects"
+          posts={[...this.props.data.allMarkdownRemark.edges]}
+          klass="right"
+          outerClick={this.hideAll}
+          visible={layoutClass !== ''}
+          
+          render={() => (
+            <ul className="slide-menu-list">
+              {[...this.props.data.allMarkdownRemark.edges].filter(this.isProject).map(({node}, index) => (
+                <li key={index}>
+                  <a className="footer-posts-link" href={node.frontmatter.path}>
+                    {node.frontmatter.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        
+        />
+
+        <Footer />
+
+      </main>
+    )
+  }
 }
 
 export default Layout
@@ -84,7 +124,7 @@ export const query = graphql`
   query LayoutQuery {
     site {
       siteMetadata {
-        title 
+        title
       }
     }
     allMarkdownRemark {
@@ -93,6 +133,7 @@ export const query = graphql`
           frontmatter {
             title
             path
+            layout
           }
         }
       }
