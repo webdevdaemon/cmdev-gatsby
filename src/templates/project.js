@@ -1,12 +1,14 @@
 import React from 'react'
-import FaGithub from 'react-icons/'
+import FaGithub from 'react-icons/fa'
+import PostInfoBar from '../components/PostInfoBar'
 // import Helmet from 'react-helmet'
 
-export default function ProjectPostTemplate({data}) {
+export default function Project({data}) {
   const {markdownRemark: project} = data
   return (
     <div>
-      <h1>{post.frontmatter.title}</h1>
+      <h1>{project.frontmatter.title}</h1>
+      <PostInfoBar></PostInfoBar>
 
       <div dangerouslySetInnerHTML={{__html: post.html}} />
     </div>

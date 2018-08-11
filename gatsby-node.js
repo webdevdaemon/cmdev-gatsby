@@ -4,9 +4,9 @@ const path = require('path')
 
 exports.createPages = ({boundActionCreators, graphql}) => {
   const {createPage} = boundActionCreators
-  const BlogPostTemplate = path.resolve('src/templates/post.js')
-  const ProjectPostTemplate = path.resolve('src/templates/project.js')
-  const templates = {BlogPostTemplate, ProjectPostTemplate}
+  const Blog = path.resolve('src/templates/post.js')
+  const Project = path.resolve('src/templates/project.js')
+  const templates = {"Blog": Blog, "Project": Project}
   return graphql(
     `
       {
@@ -27,10 +27,11 @@ exports.createPages = ({boundActionCreators, graphql}) => {
     `,
   ).then(res => {
     if (res.errors) return Promise.reject(res.errors)
-    res.data.allMarkdownRemark.edges.forEach(({node}) => {
+    const mdArr = [...res.data.allMarkdownRemark.edges]
+    mdArr.forEach(({node}) => {
       const {path, title, layout} = node.frontmatter
-      const component = templates[`${layout}PostTemplate`]
-      createPage({ path, title, component, })
+      const component = layout ? templates[`${layout}`] : Blog
+      createPage({path, title, component})
     })
   })
 }

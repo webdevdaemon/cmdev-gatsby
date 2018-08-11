@@ -1,3 +1,8 @@
+.layout .footer .nav.footer-nav > div .nav-link-wrapper .nav-link .nav-link-title {
+  font-family: 'Lato-hairline', sans-serif;
+  text-transform: uppercase;
+}
+
 .layout .header, .layout .header .header-main {
   text-align: center;
   display: flex;
@@ -20,7 +25,7 @@ body {
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 9vh minmax(70vh, auto) auto;
+  grid-template-rows: 9vh minmax(70vh, auto) 10vh;
   grid-template-areas: 'h h h h h h h' '. c c c c c .' 'f f f f f f f';
 }
 
@@ -96,7 +101,7 @@ body {
   background: #003f60;
   grid-area: h;
   width: 100vw;
-  box-shadow: 0 4px 6px #000;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
   z-index: 1100;
 }
 
@@ -142,15 +147,15 @@ body {
   color: #ebeff0;
   margin: auto;
   padding: 0;
-  -webkit-filter: drop-shadow(2px 3px 1px #000000);
-  filter: drop-shadow(2px 3px 1px #000000);
+  -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 }
 
 .layout .header .header-side.right {
   margin-right: 2vw;
 }
 
-.layout .header .header-side.right svg {
+.layout .header .header-side.right div svg {
   font-size: 7vmin;
 }
 
@@ -158,7 +163,7 @@ body {
   margin-left: 2vw;
 }
 
-.layout .header .header-side.left svg {
+.layout .header .header-side.left div svg {
   font-size: 8vmin;
 }
 
@@ -173,27 +178,48 @@ body {
   justify-content: space-between;
   align-items: stretch;
   background: #003f60;
-  height: 100%;
   width: 100%;
 }
 
-.layout .footer .footer-list {
-  display: block;
+.layout .footer .nav.footer-nav > div {
+  display: flex;
+  align-items: center;
   height: 100%;
-  width: 50%;
-  list-style: none;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
-.layout .footer .footer-list.posts li a {
-  color: red;
+.layout .footer .nav.footer-nav > div .nav-link-wrapper {
+  border-right: outset 1px #9f9f9f;
+  max-width: calc(100vw/5);
+  min-width: calc(100vw/5);
+  width: 100%;
+  height: 100%;
+  padding: 1vh auto;
 }
 
-.layout .footer .footer-list.projects li a {
-  color: yellow;
+.layout .footer .nav.footer-nav > div .nav-link-wrapper .nav-link {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.layout .footer .footer-posts-link {
-  color: aquamarine;
+.layout .footer .nav.footer-nav > div .nav-link-wrapper .nav-link .nav-link-icon-wrapper {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 8vmin;
+}
+
+.layout .footer .nav.footer-nav > div .nav-link-wrapper .nav-link .nav-link-title {
+  font-size: 8px;
+  color: #ebeff0;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .list {

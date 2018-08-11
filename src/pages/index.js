@@ -4,24 +4,20 @@ import Helmet from 'react-helmet'
 import '../layouts/index.scss'
 
 export default function Index({data, ...props}) {
-  console.log({props})
   const {edges: posts} = data.allMarkdownRemark
   return (
-    <div className="blog-posts">
-      <ul>
-        {posts.filter(post => post.node.frontmatter.title.length > 0).map(({node: post}) => {
-          return (
-            <li className="blog-post-preview" key={post.id}>
-              <p>
-                <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
-              </p>
-              {/* <h2>{post.frontmatter.date}</h2> */}
-              {/* <p>{post.excerpt}</p> */}
-            </li>
-          )
-        })}
-      </ul>
-    </div>
+    <page className="page home">
+      <section className="content title">
+        <div className="title-wrap">
+          <h1 className="home-title">{`CMDEV`}</h1>
+          <h4 className="home-subtitle">
+            {`Why Your Project or Team Cannot Live Another Day Without => CM <=`}
+          </h4>
+        </div>
+      </section>
+      <section className="content"></section>
+      <section className="content"></section>
+    </page>
   )
 }
 

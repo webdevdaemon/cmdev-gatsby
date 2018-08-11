@@ -1,42 +1,44 @@
 import React from 'React'
 import Link from 'gatsby-link'
-import {IoIosHome} from 'react-icons/io'
-import {TiInfoLarge} from 'react-icons/ti'
-import {IoIosJournal} from 'react-icons/io/'
-import {IoChatbubbles} from 'react-icons/io'
-import {IoMdCube} from 'react-icons/io'
-import {IoIosListBox} from 'react-icons/io'
+import {IconCube} from '../utils/icons'
+import {IconHome} from '../utils/icons'
+import {IconAbout} from '../utils/icons'
+import {IconBlog} from '../utils/icons'
+import {IconResume} from '../utils/icons'
+import {IconContact} from '../utils/icons'
+
+const _IconCube = (props) => <IconCube {...props} />
+const _IconHome = (props) => <IconHome {...props} />
+const _IconAbout = (props) => <IconAbout {...props} />
+const _IconBlog = (props) => <IconBlog {...props} />
+const _IconResume = (props) => <IconResume {...props} />
+const _IconContact = (props) => <IconContact {...props} />
 
 const list = [
   {
     title: 'Home',
     path: '/',
-    renderIcon: IoIosListBox,
+    renderIcon: function(props){ return _IconHome(props) },
   },
   {
     title: 'About',
     path: '/about',
-    renderIcon: IoMdCube,
+    renderIcon: function(props){ return _IconAbout(props) },
   },
   {
     title: 'Blog',
     path: '/blog',
-    renderIcon: IoChatbubbles,
+    renderIcon: function(props){ return _IconBlog(props) },
   },
   {
     title: 'Contact',
     path: '/contact',
-    renderIcon: IoIosJournal,
-  },
-  {
-    title: 'Projects',
-    path: '/projects',
-    renderIcon: TiInfoLarge,
+    renderIcon: function(props){ return _IconContact(props) },
   },
   {
     title: 'Resume',
     path: '/resume',
-    renderIcon: IoIosHome,
+    renderIcon: function(props){ return _IconResume(props) },
   },
 ]
 
@@ -44,9 +46,11 @@ const NavLinkWithIcon = props => {
   const {path, renderIcon, title} = props
   return (
     <div className={`nav-link-wrapper`}>
-      <Link to={path} className={`nav-link icon title`}>
-        <div className={`nav-link-icon icon title`}>
-          {renderIcon}
+      <Link to={path} className={`nav-link`}>
+        <div className={`nav-link-icon-wrapper`}>
+          {renderIcon({
+            className: `nav-link-icon ${title}`
+          })}
         </div>
         <p className={`nav-link-title`}>{title}</p>
       </Link>
@@ -54,14 +58,19 @@ const NavLinkWithIcon = props => {
   )
 }
 
-const NavList = () => {
+const NavList = props => {
   return (
     <div>
-      {list.map((link, dex) => {
-        return (
-          <NavLinkWithIcon title={link.title} path={link.path} renderIcon={link.renderIcon} />
-        )
-      })} 
+      {list.map((link, dex) => 
+        <NavLinkWithIcon
+          key={dex}
+          path={link.path}
+          title={link.title}
+          renderIcon={
+            (props) => link.renderIcon(props)
+          }
+        />
+      )}
     </div>
   )
 }

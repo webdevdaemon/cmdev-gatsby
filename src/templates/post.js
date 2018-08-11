@@ -1,7 +1,7 @@
 import React from 'react'
 // import Helmet from 'react-helmet'
 
-export default function BlogPostTemplate({data}) {
+export default function Blog({data}) {
   const {markdownRemark: post} = data
   return (
     <div>

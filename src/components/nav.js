@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NavList from './navList'
+import NavList from './NavList'
 
 const Nav = ({klass}) => {
   return (

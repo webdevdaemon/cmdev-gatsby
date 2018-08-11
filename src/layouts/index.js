@@ -3,10 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-import Header from '../components/header'
-import Footer from '../components/footer'
-import Content from '../components/content'
-import SlideMenu from '../components/slideMenu'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import Content from '../components/Content'
+import SlideMenu from '../components/SlideMenu'
 
 const INIT_STATE = {
   leftOpen: false,
@@ -49,8 +49,8 @@ class Layout extends React.Component {
 
   render() {
     const {data, children} = this.props
-    const {layoutClass, mdBlogArr, mdProjArr} = this.state
-    console.log(data, layoutClass, mdBlogArr, mdProjArr)
+    const {layoutClass} = this.state
+    console.log(data, layoutClass)
     
     return (
       <main className={`layout${layoutClass}`}>
@@ -84,7 +84,8 @@ class Layout extends React.Component {
                       {node.frontmatter.title}
                     </a>
                   </li>
-                ))}
+                ))
+              }
             </ul>
           )}
         
