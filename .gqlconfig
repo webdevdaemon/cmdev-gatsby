@@ -37,7 +37,7 @@
       {
         match: 'path/to/code/**/*.xyz',
         parser: ['EmbeddedQueryParser', {
-          startTag: '"""'
+          startTag: '"""',
           endTag: '"""'
         }],
       },
@@ -45,7 +45,7 @@
       {
         match: 'path/to/code/**/*.xyz',
         parser: ['EmbeddedQueryParser', {
-          startTag: '"""'
+          startTag: '"""',
           endTag: '"""'
         }],
         validate: {

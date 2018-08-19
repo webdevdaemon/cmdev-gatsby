@@ -32,10 +32,12 @@ $themeLight: #ebeff0;
     margin: 0 auto;
     padding: 0;
 }
-
 body {
     margin: 0;
     padding: 0;
+}
+ul {
+    list-style: none;
 }
 
 /////////////////////
@@ -122,6 +124,7 @@ body {
     .header {
         position: sticky;
         top: 0;
+        bottom: auto;
         background: $themeDark;
         grid-area: h;
         @extend %flex-center;
@@ -222,7 +225,10 @@ body {
                         display: block;
                         margin: 0 auto;
                         padding: 0;
-                        max-width: 8vmin;
+                        max-width: 50px;
+                        // svg {
+
+                        // }
                     }
                     .nav-link-title {
                         @extend %displayFont;
@@ -237,8 +243,10 @@ body {
     }
 }
 
-.list {
-    list-style: none;
+.page {
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
+

@@ -1,5 +1,4 @@
 import React from 'react'
-import FaGithub from 'react-icons/fa'
 import PostInfoBar from '../components/PostInfoBar'
 // import Helmet from 'react-helmet'
 

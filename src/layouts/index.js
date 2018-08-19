@@ -51,13 +51,15 @@ class Layout extends React.Component {
     const {data, children} = this.props
     const {layoutClass} = this.state
     console.log(data, layoutClass)
-    
+
     return (
       <main className={`layout${layoutClass}`}>
-
         <Helmet
           title={data.site.siteMetadata.title}
-          meta={[{name: 'description', content: 'Sample'}, {name: 'keywords', content: 'sample, something'}]}
+          meta={[
+            {name: 'description', content: 'Sample'},
+            {name: 'keywords', content: 'sample, something'}
+          ]}
         />
 
         <Header
@@ -66,14 +68,13 @@ class Layout extends React.Component {
           siteTitle={data.site.siteMetadata.title}
         />
 
-        <Content>{children()}</Content>
+        <Content> {children()} </Content>
 
         <SlideMenu
           menuTitle="cmDevBlog"
           klass="left"
           outerClick={this.hideAll}
           visible={layoutClass !== ''}
-          
           render={() => (
             <ul className="slide-menu-list">
               {[...this.props.data.allMarkdownRemark.edges]
@@ -84,11 +85,9 @@ class Layout extends React.Component {
                       {node.frontmatter.title}
                     </a>
                   </li>
-                ))
-              }
+                ))}
             </ul>
           )}
-        
         />
 
         <SlideMenu
@@ -97,7 +96,6 @@ class Layout extends React.Component {
           klass="right"
           outerClick={this.hideAll}
           visible={layoutClass !== ''}
-          
           render={() => (
             <ul className="slide-menu-list">
               {[...this.props.data.allMarkdownRemark.edges].filter(this.isProject).map(({node}, index) => (
@@ -109,11 +107,8 @@ class Layout extends React.Component {
               ))}
             </ul>
           )}
-        
         />
-
         <Footer />
-
       </main>
     )
   }

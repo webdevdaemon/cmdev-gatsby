@@ -1,0 +1,9 @@
+@import '../layouts/index.scss';
+
+.header, .footer, .aside {
+  display: none;
+}
+
+.fill-viewport {
+  background: url('../../public/static/city.jpg');
+}

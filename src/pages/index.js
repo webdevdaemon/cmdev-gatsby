@@ -1,36 +1,55 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import FillViewport from '../components/FillViewport'
 import '../layouts/index.scss'
+import './index.scss'
 
-export default function Index({data, ...props}) {
-  const {edges: posts} = data.allMarkdownRemark
-  return (
-    <page className="page home">
-      <section className="content title">
-        <div className="title-wrap">
-          <h1 className="home-title">{`CMDEV`}</h1>
-          <h4 className="home-subtitle">
-            {`Why Your Project or Team Cannot Live Another Day Without => CM <=`}
-          </h4>
-        </div>
-      </section>
-      <section className="content"></section>
-      <section className="content"></section>
-    </page>
-  )
+const INIT_STATE = {}
+
+class Index extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {...INIT_STATE}
+  }
+
+  static propTypes = {
+    data: PropTypes.any,
+    children: PropTypes.any,
+  }
+
+  render() {
+    const {data, children} = this.props
+
+    return (
+      <main className={`page index landing-page`}>
+        <Helmet
+          title={data.site.siteMetadata.title}
+          meta={[
+            {name: 'description', content: 'Sample'},
+            {name: 'keywords', content: 'sample, something'},
+          ]}
+        />
+        <FillViewport />
+      </main>
+    )
+  }
 }
 
-export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark {
+export default Index
+
+export const query = graphql`
+  query LandingPageQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allSitePage {
       edges {
         node {
-          id
-          frontmatter {
-            title
-            path
-          }
+          internalComponentName
+          path
         }
       }
     }

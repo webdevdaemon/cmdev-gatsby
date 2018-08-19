@@ -9,12 +9,11 @@ class Content extends React.Component {
     title: PropTypes.string,
   }
   render() {
-    const {title} = this.props
+    const {title, children} = this.props
     return (
       <div className='content'>
         <PageTitle title={title} />
-        
-        {this.props.children}
+        {children}
       </div>
     )
   }

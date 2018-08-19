@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "axios": "^0.18.0",
     "gatsby": "^1.9.277",
     "gatsby-link": "^1.6.46",
     "gatsby-plugin-catch-links": "^1.0.24",
@@ -13,8 +14,9 @@
     "gatsby-plugin-typography": "^1.7.19",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
+    "react-axios": "^2.0.0",
+    "react-codepen-embed": "^0.1.0",
     "react-helmet": "^5.2.0",
-    "react-icons": "^3.0.5",
     "react-icons-kit": "^1.1.7",
     "typography-plugin-code": "^0.16.11",
     "typography-theme-bootstrap": "^0.16.7",
@@ -33,7 +35,8 @@
   },
   "devDependencies": {
     "@playlyfe/gql": "^2.6.0",
-    "prettier": "^1.13.7"
+    "prettier": "^1.13.7",
+    "react-svg-loader": "^2.1.0"
   },
   "repository": {
     "type": "git",

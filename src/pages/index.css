@@ -233,3 +233,11 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+.header, .footer, .aside {
+  display: none;
+}
+
+.fill-viewport {
+  background: url("../../public/static/city.jpg");
+}
